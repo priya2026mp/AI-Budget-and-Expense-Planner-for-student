@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Budget Planner for Students</title>
+<style>
+body{font-family:Arial;background:#f5f7fb;margin:0;padding:20px}
+.card{background:white;max-width:500px;margin:auto;padding:20px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+h1{color:#6c5ce7;text-align:center}
+input,button{width:100%;padding:12px;margin:8px 0;border-radius:8px;border:1px solid #ddd}
+button{background:#6c5ce7;color:white;border:none;font-weight:bold}
+.result{margin-top:15px;padding:10px;background:#eef2ff;border-radius:8px}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>💰 AI Budget Planner</h1>
+<p>For Students</p>
+<input id="income" type="number" placeholder="Monthly Income / Allowance ₹">
+<input id="expense" type="number" placeholder="Monthly Expenses ₹">
+<button onclick="calculate()">Calculate with AI</button>
+<div id="output" class="result">Enter details to get plan...</div>
+</div>
+<script>
+function calculate(){
+let inc=document.getElementById('income').value;
+let exp=document.getElementById('expense').value;
+let save=inc-exp;
+let out=document.getElementById('output');
+if(!inc||!exp){out.innerHTML="Please enter both values da!";return;}
+if(save<0){out.innerHTML=`⚠️ Over Budget! You spend ₹${Math.abs(save)} extra.<br>AI Tip: Cut food delivery & OTT.`;}
+else if(save<inc*0.2){out.innerHTML=`💡 Savings: ₹${save}<br>AI Tip: Try 50-30-20 rule. Save at least 20%.`;}
+else{out.innerHTML=`✅ Great! Savings: ₹${save}<br>AI Tip: Invest ₹${Math.round(save*0.5)} in SIP for future!`;}
+}
+</script>
+</body>
+  </html>
